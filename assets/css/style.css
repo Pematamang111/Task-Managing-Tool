@@ -14,3 +14,36 @@ body {
 .task-card:hover {
   cursor: grab;
 }
+
+#formModal {
+  text-align: center;
+  
+}
+
+#exampleModalLabel {
+  margin-left: 160px;
+  font-size: 2rem;
+}
+
+#add-new-task {
+  margin-right: 180px;
+}
+
+#input {
+  height: 20px;
+  width: 200px;
+}
+
+#descriptionInput {
+  margin-left: 65px;
+}
+
+#description {
+  margin-top: 10px;
+  margin-bottom: 0;
+  margin-left: 30px;
+}
+
+.draggable { width: 200px; 
+             height: 200px; 
+             padding: 0.5em; }
