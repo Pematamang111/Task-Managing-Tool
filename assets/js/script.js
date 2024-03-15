@@ -83,6 +83,9 @@ function renderTaskList() {
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
 const cardClear = document.querySelector('.card').innerHTML = " ";
+
+$('#add-new-task').on('click', function(){
+
 const newObject = {
 title: newTitleInput.value,
 description: newDescription.value,
@@ -92,6 +95,8 @@ localStorage.setItem('newString', JSON.stringify(newObject));
 JSON.parse(localStorage.getItem('newString'));
 
 newTask.push('newString');
+
+});
 
 const today = dayjs();
 if(newObject.date > today){
@@ -108,7 +113,7 @@ if(newObject.date > today){
 }
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
-
+event.target
 $(deleteEl).on('click', function(){
     newCard.remove();
 })
@@ -122,5 +127,6 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
-
+handleAddTask();
+handleDeleteTask();
 });
