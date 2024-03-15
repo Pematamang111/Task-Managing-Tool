@@ -1,7 +1,10 @@
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
-
+let todo = document.querySelector('#todo-cards');
+let inprogress = document.querySelector('#in-progress-cards');
+let done = document.querySelector('#done-cards'); 
+let deleteEl = document.querySelector('.btn-btn');
 //data
 const newTask = [];
 
@@ -61,12 +64,16 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-   const todo = document.querySelector('.todo-cards');
+   todo.textContent = " ";
+   inprogress.textContent = " ";
+   done.textContent = " ";
    
    for (let i = 0; i<newTask.length; i++){
       const newCard = createTaskCard(task);
       todo.appendChild(newCard);
    }
+
+
 
    $( function() {
     $( ".draggable" ).draggable();
@@ -75,11 +82,36 @@ function renderTaskList() {
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
+const cardClear = document.querySelector('.card').innerHTML = " ";
+const newObject = {
+title: newTitleInput.value,
+description: newDescription.value,
+date: newCalenderInput.value
+}
+localStorage.setItem('newString', JSON.stringify(newObject));
+JSON.parse(localStorage.getItem('newString'));
 
+newTask.push('newString');
+
+const today = dayjs();
+if(newObject.date > today){
+    newCard.style.backgroundColor = red;
+    
+}else if(newObject.date < today){
+    newCard.style.backgroundColor = yellow;
+
+}else if(newObject.date === today){
+    newCard.style.backgroundColor = green;
+    
 }
 
+}
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
+
+$(deleteEl).on('click', function(){
+    newCard.remove();
+})
 
 }
 
